@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.dilshan.testproj.entity.Employee;
@@ -36,24 +37,14 @@ public class EmployeeController {
 		LOGGER.info(":: read employee :::: EmployeeController - readEmployee ::");
 		return employeeService.getEmployeesList();
 	}
-
 	
-//	@GetMapping("/leaveId/{leaveId}/leaveCount/{leaveCount}")
-//	public List<Employee> findByLeaveCount(@PathVariable("leaveId") Long leaveId,@PathVariable("leaveCount") int leaveCount) {
-//		try {
-//			
-//			LOGGER.info(":: Welcome ! This is Leave Counter :::: EmployeeController - LeaveCounter ::");
-//			
-//			return employeeService.findByLeaveType(leaveId,leaveCount);
-//			
-//			
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//			e.getMessage();
-//			
-//			LOGGER.info(":: This is Leaves Counter Error :::: EmployeeController - LeaveCounter ::");
-//			return null;
-//		}
-//	}
+	
+	@PostMapping("/requestSalary")
+	public Long requestSalary(@RequestParam("empId") Long empId) {
+
+		LOGGER.info(":: Welcome This is Rest api Request Salary :::: EmployeeController - requestSalary ::");
+		return employeeService.findCounts(empId);
+
+	}
 
 }

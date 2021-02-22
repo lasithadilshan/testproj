@@ -4,36 +4,38 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class Account {
+public class LeaveSummery {
 	
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long accountId;
-    private int coun;
+    private long id;
+    private int count;
     
     @ManyToOne
+    @JoinColumn(name = "emp_id")
     private Employee employee;
     
     @ManyToOne
     private LeaveType leaveType;
 
-	public long getAccountId() {
-		return accountId;
+	public long getId() {
+		return id;
 	}
 
-	public void setAccountId(long accountId) {
-		this.accountId = accountId;
-	}
-	
-	public int getCoun() {
-		return coun;
+	public void setId(long id) {
+		this.id = id;
 	}
 
-	public void setCoun(int coun) {
-		this.coun = coun;
+	public int getCount() {
+		return count;
+	}
+
+	public void setCount(int count) {
+		this.count = count;
 	}
 
 	public Employee getEmployee() {
@@ -44,14 +46,13 @@ public class Account {
 		this.employee = employee;
 	}
 
-	public LeaveType getLeave() {
+	public LeaveType getLeaveType() {
 		return leaveType;
 	}
 
-	public void setLeave(LeaveType leaveType) {
+	public void setLeaveType(LeaveType leaveType) {
 		this.leaveType = leaveType;
 	}
 
 
-	
 }

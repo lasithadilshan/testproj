@@ -1,25 +1,22 @@
 package com.dilshan.testproj.entity;
 
-import java.util.List;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
-
+import javax.persistence.ManyToOne;
 
 @Entity
-public class LeaveType {
+public class Allowance {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	private String type;
-	private int leaveCount;
+	private long amount;
 	
-	@OneToMany(mappedBy = "leaveType")
-	private List<LeaveSummery> leaveSummeries;
+	@ManyToOne
+	private Employee employee;
 
 	public long getId() {
 		return id;
@@ -37,22 +34,20 @@ public class LeaveType {
 		this.type = type;
 	}
 
-	public int getLeaveCount() {
-		return leaveCount;
+	public long getAmount() {
+		return amount;
 	}
 
-	public void setLeaveCount(int leaveCount) {
-		this.leaveCount = leaveCount;
+	public void setAmount(long amount) {
+		this.amount = amount;
 	}
 
-	public List<LeaveSummery> getLeaves() {
-		return leaveSummeries;
+	public Employee getEmployee() {
+		return employee;
 	}
 
-	public void setLeaves(List<LeaveSummery> leaveSummeries) {
-		this.leaveSummeries = leaveSummeries;
+	public void setEmployee(Employee employee) {
+		this.employee = employee;
 	}
-
-	
 
 }

@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -21,7 +22,10 @@ public class Employee {
 	private int contactNumber;
 	
 	@OneToMany(mappedBy = "employee")
-	private List<Account> accounts;
+	private List<LeaveSummery> leaveSummeries;
+	
+	@ManyToOne
+	private SalaryScale salaryScales;
 
 	public long getEmpId() {
 		return empId;
@@ -71,12 +75,22 @@ public class Employee {
 		this.contactNumber = contactNumber;
 	}
 
-	public List<Account> getAccounts() {
-		return accounts;
+	public List<LeaveSummery> getLeaves() {
+		return leaveSummeries;
 	}
 
-	public void setAccounts(List<Account> accounts) {
-		this.accounts = accounts;
+	public void setLeaves(List<LeaveSummery> leaveSummeries) {
+		this.leaveSummeries = leaveSummeries;
 	}
+
+	public SalaryScale getSalaryScales() {
+		return salaryScales;
+	}
+
+	public void setSalaryScales(SalaryScale salaryScales) {
+		this.salaryScales = salaryScales;
+	}
+
+	
 
 }

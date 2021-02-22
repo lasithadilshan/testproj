@@ -4,13 +4,12 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import com.dilshan.testproj.entity.Account;
-
+import com.dilshan.testproj.entity.LeaveSummery;
 
 @Repository
-public interface AccountRepository extends JpaRepository<Account, Long>{
+public interface LeaveSummeryRepository extends JpaRepository<LeaveSummery, Long>{
 	
-	@Query(value = "SELECT SUM(coun) FROM Account a WHERE a.employee_emp_id = ?1 AND a.leave_type_id = ?2", nativeQuery = true)
+	@Query(value = "SELECT SUM(coun) FROM Leave a WHERE a.employee_emp_id = ?1 AND a.leave_type_id = ?2", nativeQuery = true)
 	Integer findCounts(Long employee_emp_id,Long leave_type_id);
 	
 //	@Query(value = "SELECT SUM(coun) FROM Account a WHERE a.employee_emp_id =:empId AND a.leave_type_leave_id =:leaveId" , nativeQuery = true)
